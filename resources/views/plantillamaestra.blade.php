@@ -13,6 +13,7 @@
   <body>
     <a href="{{route('servicios')}}" class="btn btn-primary">Servicios</a>
     <a href="{{route('horarios')}}" class="btn btn-primary">Horarios</a>
+    <a href="{{route('reservas')}}" class="btn btn-primary">Reservas</a>
     <div class="container">
         @yield('seccion')
     </div>
