@@ -14,3 +14,15 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+//Url -- fichero
+Route::get('servicios', function()
+{
+    return view('servicio');
+})->name('servicios');
+
+Route::get('horarios', function()
+{
+    return view('horario');
+})->name('horarios'); //El nombre de aquí da igual el que sea, recuerda cambiarlo
