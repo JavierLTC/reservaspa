@@ -14,7 +14,7 @@ class Servicio extends Migration
     public function up()
     {
         Schema::create('servicio', function (Blueprint $table) {
-            $table->integer('id')->index();
+            $table->increments('id');
             $table->decimal('precio', 7, 2);
         });
     }

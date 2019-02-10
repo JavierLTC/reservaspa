@@ -14,7 +14,7 @@ class Reservas extends Migration
     public function up()
     {
         Schema::create('reservas', function (Blueprint $table) {
-            $table->integer('id_reserva')->index();
+            $table->increments('id_reserva');
             $table->string('nombre_cliente');
             $table->string('comentario');
             $table->string('dia');

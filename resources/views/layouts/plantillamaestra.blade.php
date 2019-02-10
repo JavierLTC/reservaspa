@@ -11,8 +11,7 @@
     <title>Hello, world!</title>
   </head>
   <body>
-    <a href="{{route('servicios')}}" class="btn btn-primary">Servicios</a>
-    <a href="{{route('horarios')}}" class="btn btn-primary">Horarios</a>
+
     
     <div class="container">
         @yield('seccion')

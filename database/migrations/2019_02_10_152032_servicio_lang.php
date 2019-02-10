@@ -14,8 +14,8 @@ class ServicioLang extends Migration
     public function up()
     {
         Schema::create('servicio_lang', function (Blueprint $table) {
-            $table->integer('id_servicio')->index();
-            $table->integer('id_lang')->index();
+            $table->integer('id_servicio');
+            $table->integer('id_lang');
             $table->string('nombre');
             $table->string('descripcion');
         });

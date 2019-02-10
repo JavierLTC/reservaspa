@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\DB;
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -15,10 +14,10 @@ class ServicioController extends Controller
     public function index()
     {
         //$servicios = servicio::orderby('id', 'DESC');
-        $servicios = DB::table('servicio')
+        $servicios = \DB::table('servicio')
         ->join('servicio_lang', 'servicio.id', '=', 'servicio_lang.id_servicio')
         ->select('servicio.*', 'servicio_lang.*')->get();
-        return view('servicio', compact('servicios'));
+        return view('servicios.servicio', compact('servicios'));
     }
 
     /**
@@ -28,7 +27,7 @@ class ServicioController extends Controller
      */
     public function create()
     {
-        //
+        return view('servicios.create');
     }
 
     /**
@@ -39,7 +38,17 @@ class ServicioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,['precio'=>'required']);
+        \DB::table('servicio')->insert([
+            ['precio' => $request->precio]
+        ]);
+
+        $this->validate($request,['nombre'=>'required', 'descripcion'=>'required', 'idioma'=>'required']);
+        $last = \DB::getPdo()->lastInsertId();
+        \DB::table('servicio_lang')->insert([
+            ['id_servicio' => $last, 'nombre' => $request->nombre, 'descripcion' => $request->descripcion, 'id_lang' => $request->idioma]
+        ]);
+        return redirect()->route('servicios.index')->with('success','Registro creado satisfactoriamente');
     }
 
     /**
