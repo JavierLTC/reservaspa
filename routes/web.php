@@ -17,10 +17,11 @@ Route::get('/', function () {
 
 
 //Url -- fichero
-Route::get('servicios', function()
-{
-    return view('servicio');
-})->name('servicios');
+// Route::get('servicios', function()
+// {
+//     return view('servicio');
+// })->name('servicios');
+Route::get('servicios', 'ServicioController@index')->name('reservas');
 
 Route::get('horarios', function()
 {
@@ -28,7 +29,7 @@ Route::get('horarios', function()
 })->name('horarios'); //El nombre de aquí da igual el que sea, recuerda cambiarlo
 
 //Route::get('reservas', 'ReservasController@inicio')->name('reservas');
-Route::get('reservas/{id_user?}', 'ReservasController@getUsers')->name('reservas');
+//Route::get('reservas/{id_user?}', 'ReservasController@getUsers')->name('reservas');
 
 
 // Route::get('reservas', function()

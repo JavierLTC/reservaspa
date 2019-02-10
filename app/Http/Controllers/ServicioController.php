@@ -1,10 +1,11 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class ReservasController extends Controller
+class ServicioController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,11 @@ class ReservasController extends Controller
      */
     public function index()
     {
-        //
+        //$servicios = servicio::orderby('id', 'DESC');
+        $servicios = DB::table('servicio')
+        ->join('servicio_lang', 'servicio.id', '=', 'servicio_lang.id_servicio')
+        ->select('servicio.*', 'servicio_lang.*')->get();
+        return view('servicio', compact('servicios'));
     }
 
     /**
